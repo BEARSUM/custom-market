@@ -1,7 +1,10 @@
+import Routes from '@/routes/Router';
+import './lib/tailwind.css';
+
 function App() {
   return (
     <>
-      <h1>First Setting</h1>
+      <Routes />
     </>
   );
 }
