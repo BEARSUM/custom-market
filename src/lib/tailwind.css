@@ -13,8 +13,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 12%;
 
-    --primary: 211.8 100% 67.1%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 125 29% 36%;
+    --primary-foreground: 0 0% 12%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -68,9 +68,16 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border box-border m-0 p-0;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .li-after::after {
+    content: '|';
+    @apply mx-1;
   }
 }

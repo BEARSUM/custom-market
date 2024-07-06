@@ -12,7 +12,7 @@ import { Button } from '../ui/button';
  */
 const Header = () => {
   return (
-    <div className="w-full h-16 px-24 flex justify-between items-center border-b-[1.6px] border-foreground fixed top-0">
+    <div className="w-full h-16 px-24 flex justify-between items-center border-b border-foreground bg-background fixed top-0 z-[999]">
       <Button variant="ghost" size="icon">
         <img className="w-6" src="/icons/hamburger_button_icon.svg" alt="mypage_icon" />
       </Button>

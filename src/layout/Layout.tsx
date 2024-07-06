@@ -10,9 +10,9 @@ const Layout = (props: LayoutPropsType) => {
   const { children } = props;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="w-screen min-h-screen bg-background flex flex-col relative">
       <Header />
-      <div className="grow">{children}</div>
+      <div className="mt-16 grow">{children}</div>
       <Footer />
     </div>
   );
