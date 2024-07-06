@@ -154,7 +154,25 @@ module.exports = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+
       keyframes: {
+        slider: {
+          '0%': {
+            transform: 'translateX(0)',
+          },
+          '25%': {
+            transform: 'translateX(0)',
+          },
+          '50%': {
+            transform: 'translateX(-100%)',
+          },
+          '75%': {
+            transform: 'translateX(-100%)',
+          },
+          '100%': {
+            transform: 'translateX(0%)',
+          },
+        },
         'accordion-down': {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
@@ -165,6 +183,7 @@ module.exports = {
         },
       },
       animation: {
+        slider: 'slider 32s ease-in-out infinite ',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
