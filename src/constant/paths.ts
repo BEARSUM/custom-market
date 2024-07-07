@@ -14,4 +14,12 @@ export const PATH = Object.freeze({
    * 장바구니 페이지
    */
   cart: '/cart' as const,
+  /**
+   * 커스터마이징 페이지
+   */
+  customizing: '/customizing' as const,
+  /**
+   * shop 페이지
+   */
+  shop: '/shop' as const,
 });

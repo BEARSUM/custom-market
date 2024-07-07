@@ -1,23 +1,18 @@
 import { Link } from 'react-router-dom';
 
 import { PATH } from '@/constant/paths';
-import { Button } from '../ui/button';
+import { NavSheet } from './NavSheet';
 
 /**
  * 전체 페이지에서 쓰이는 header 컴포넌트
  */
 
-/**
- * @todo 햄버거 버튼에 네비게이션 메뉴 추가
- */
 const Header = () => {
   return (
-    <div className="w-full h-16 px-24 flex justify-between items-center border-b border-foreground bg-background fixed top-0 z-[999]">
-      <Button variant="ghost" size="icon">
-        <img className="w-6" src="/icons/hamburger_button_icon.svg" alt="mypage_icon" />
-      </Button>
+    <div className="w-full h-16 px-24 flex justify-between items-center border-b border-foreground bg-background fixed top-0 z-10">
+      <NavSheet />
       <Link to={PATH.root}>
-        <img className="h-7" src="/icons/logo.svg" alt="logo" />
+        <img className="w-40" src="/icons/logo.svg" alt="logo" />
       </Link>
       <div className="flex gap-6">
         <Link to={PATH.mypage}>
