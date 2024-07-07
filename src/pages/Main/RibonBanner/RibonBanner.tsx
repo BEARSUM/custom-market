@@ -7,7 +7,7 @@ import { PATH } from '@/constant/paths';
 const RibonBanner = () => {
   return (
     <>
-      <div className="w-full h-14 bg-[#efefef] shadow-md">
+      <div className="w-full h-14 bg-[#efefef] shadow-md  overflow-hidden">
         <div className="w-full h-full flex animate-slider">
           <div className="flex justify-center items-center basis-full shrink-0 ">
             <span className="mr-1">content</span>
