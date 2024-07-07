@@ -22,6 +22,7 @@ const NavSheet = () => {
           </SheetTitle>
         </SheetHeader>
         <ul className="flex flex-col gap-4 font-semibold text-xl mt-10">
+          <LinkList path={PATH.root}>Home</LinkList>
           <LinkList path={PATH.shop}>Shop</LinkList>
           <LinkList path={PATH.customizing}>Customizing</LinkList>
         </ul>
