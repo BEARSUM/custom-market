@@ -2,17 +2,21 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { PATH } from '@/constant/paths';
 
-import { Layout } from '@/layout';
+import { Layout, LayoutWithNavbar } from '@/layout';
 import { MainPage } from '@/pages/Main';
+import { CustomizingPage } from '@/pages/Customizing';
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
+      <Routes>
+        <Route element={<Layout />}>
           <Route index path={PATH.root} element={<MainPage />} />
-        </Routes>
-      </Layout>
+        </Route>
+        <Route element={<LayoutWithNavbar />}>
+          <Route index path={PATH.customizing} element={<CustomizingPage />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 };

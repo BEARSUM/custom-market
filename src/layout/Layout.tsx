@@ -1,18 +1,18 @@
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
-import { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
 
-type LayoutPropsType = {
-  children: ReactNode | ReactNode[];
-};
+/**
+ * 기본 Layout(Header, Footer)
+ */
 
-const Layout = (props: LayoutPropsType) => {
-  const { children } = props;
-
+const Layout = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
       <Header />
-      <div className="mt-16 grow">{children}</div>
+      <div className="mt-16 grow">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
