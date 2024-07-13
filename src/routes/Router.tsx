@@ -5,6 +5,7 @@ import { CUSTOMIZING_PATH, PATH } from '@/constant/paths';
 import { Layout, LayoutWithNavbar } from '@/layout';
 import { MainPage } from '@/pages/Main';
 import { CustomizingPage } from '@/pages/Customizing';
+import { CustomizingOrderPage } from '@/pages/CustomizingOrder';
 
 const Router = () => {
   return (
@@ -12,6 +13,7 @@ const Router = () => {
       <Routes>
         <Route element={<Layout />}>
           <Route index path={PATH.root} element={<MainPage />} />
+          <Route index path={CUSTOMIZING_PATH.order} element={<CustomizingOrderPage />} />
         </Route>
         <Route element={<LayoutWithNavbar />}>
           <Route index path={CUSTOMIZING_PATH.customizing} element={<CustomizingPage />} />

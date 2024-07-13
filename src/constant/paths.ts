@@ -33,4 +33,9 @@ export const CUSTOMIZING_PATH = {
    * 커스터마이징 페이지 generatePath
    */
   customizing: '/customizing/:category' as const,
+
+  /**
+   * 커스터마이징 주문글 작성 페이지 generatePath
+   */
+  order: '/customizing/order/:id' as const,
 };
