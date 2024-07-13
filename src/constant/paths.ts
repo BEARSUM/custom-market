@@ -30,7 +30,7 @@ export const PATH = Object.freeze({
 
 export const CUSTOMIZING_PATH = {
   /**
-   * generatePath
+   * 커스터마이징 페이지 generatePath
    */
   customizing: '/customizing/:category' as const,
 };

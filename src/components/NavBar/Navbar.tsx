@@ -17,13 +17,14 @@ type CategoryPropsType = {
 };
 const Navbar = ({ categoryList }: CategoryPropsType) => {
   const gerneratePath = (category: string) => {
-    return generatePath(CUSTOMIZING_PATH.customizing, { category: category });
+    const path = generatePath(CUSTOMIZING_PATH.customizing, { category: category });
+    return path;
   };
 
   return (
     <>
       <ul className="flex">
-        <LinkList path={PATH.customizing}>customizing</LinkList>
+        <LinkList path={gerneratePath('all')}>customizing</LinkList>
         <LinkList path={PATH.shop}>shop</LinkList>
       </ul>
       <ul className="flex">
