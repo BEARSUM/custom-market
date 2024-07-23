@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import ReactQuill, { ReactQuillProps } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -10,14 +9,14 @@ import 'react-quill/dist/quill.snow.css';
  * <QuillEditor ref={quillRef} modules={modules} placeholder="내용을 입력해주세요." />
  */
 
-const QuillEditor = forwardRef<ReactQuill, ReactQuillProps>(({ modules, placeholder }, ref) => {
+const QuillEditor = ({ modules, placeholder }: ReactQuillProps) => {
   const { control } = useFormContext();
 
   return (
     <Controller
       name="content"
       control={control}
-      render={({ field: { value, onChange } }) => (
+      render={({ field: { value, onChange, ref } }) => (
         <ReactQuill
           placeholder={placeholder}
           modules={modules}
@@ -30,6 +29,6 @@ const QuillEditor = forwardRef<ReactQuill, ReactQuillProps>(({ modules, placehol
       )}
     />
   );
-});
+};
 
 export default QuillEditor;
