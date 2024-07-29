@@ -1,9 +1,11 @@
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 import { QuillEditor } from '@/components/QuillEditor';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { SelectAccordion } from '@/components/SelectAccordion';
 import { Input } from '@/components/ui/input';
+import { customOrderDataCleansing } from './utils/cleansing';
+import { useRef } from 'react';
 
 //임시데이터
 const data = [
@@ -20,11 +22,35 @@ const data = [
 export type TImage = { image: File; imageUrl: string };
 
 const CustomizingOrder = () => {
-  const method = useForm<{}>({
-    defaultValues: {},
+  const method = useForm<{ images: TImage[] }>({
+    defaultValues: { images: [] },
   });
 
-  const { control } = method;
+  const { handleSubmit: submit, getValues, control } = method;
+
+  const { fields, append, remove } = useFieldArray({ control, name: 'images' });
+
+  const uploadRef = useRef<HTMLInputElement>(null);
+  const handleUploadRef = () => {
+    uploadRef.current?.click();
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { files = [] } = e.target;
+
+    if (files && files.length > 0) {
+      Array.from(files).forEach((file) => {
+        const imageUrl = URL.createObjectURL(file);
+
+        append({ image: file, imageUrl: imageUrl });
+      });
+    }
+  };
+
+  const handleSubmit = submit(async () => {
+    const orderParams = await customOrderDataCleansing(getValues());
+    console.log('orderParams', orderParams);
+  });
 
   return (
     <div className="px-20 py-20 flex flex-col items-center">
@@ -50,16 +76,35 @@ const CustomizingOrder = () => {
             {/* 이미지 */}
             <div className="flex items-center gap-2">
               <div>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" type="button" size="sm" onClick={handleUploadRef}>
                   이미지 첨부
                 </Button>
-                <Input className="hidden" accept="image/*" type="file" multiple />
+                <Input
+                  ref={uploadRef}
+                  onChange={handleFileChange}
+                  className="hidden"
+                  accept="image/*"
+                  type="file"
+                  multiple
+                />
               </div>
-              <div className="flex gap-2"></div>
+              <div className="flex gap-2">
+                {' '}
+                {fields.map(({ image, id }, index) => (
+                  <div key={id} className="">
+                    <span className="underline">{image.name}</span>
+                    <Button variant="ghost" type="button" className="px-2" onClick={() => remove(index)}>
+                      x
+                    </Button>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <div className="flex justify-center mt-6">
-            <Button size="lg">주문하기</Button>
+            <Button size="lg" type="submit" onClick={handleSubmit}>
+              주문하기
+            </Button>
           </div>
         </FormProvider>
       </div>
